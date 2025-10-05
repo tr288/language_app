@@ -1,0 +1,76 @@
+<html>
+<head>
+<title>language_app</title>
+<style>
+* {
+  font-size: 25px;
+  text-align: center;
+  margin: auto;
+}
+body {
+  background-color: darkgrey;
+  color: white;
+}
+.fc {
+  border: solid;
+  width: 50%;
+  padding: 5%;
+  border-radius: 15px;
+}
+</style>
+</head>
+<body>
+<br>
+<br>
+<h1>CODING LANGUAGES</h1>
+<br>
+<div class="fc">
+<form onsubmit="show(event)">
+  <label>Name : </label>
+  <br>
+  <input type="text" id="name" placeholder="Enter your name">
+  <br><br>
+  <label>Select One</label>
+  <br>
+  <input type="checkbox" id="py">Python
+  <input type="checkbox" id="ja">Java
+  <input type="checkbox" id="js" checked>Javascript
+  <br><br>
+  <input type="submit">
+</form>
+<h2 id="msg"></h2>
+</div>
+
+<script>
+function show(event) {
+  event.preventDefault(); 
+
+  let name = document.getElementById("name");
+  let py = document.getElementById("py");
+  let ja = document.getElementById("ja");
+  let js = document.getElementById("js");
+  let msg = document.getElementById("msg");
+
+  if (name.value.trim() === "") {
+    alert("Name cannot be empty");
+    msg.innerHTML = "";
+    name.focus();
+    return;
+  }
+
+  let language = "";
+
+  if (py.checked) language += "Python ";
+  if (ja.checked) language += "Java ";
+  if (js.checked) language += "Javascript ";
+
+  if (language === "") {
+    language = "No language selected";
+  }
+
+  let ans = "Name = " + name.value + " | SkillSet: " + language;
+  msg.innerHTML = ans;
+}
+</script>
+</body>
+</html>
